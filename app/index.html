@@ -14,16 +14,102 @@
 
 <body>
     <header>
-        <h1>Hello</h1>
-        <button>Click here to check availability in your area and get <br> a free estimate <br> (no obligation)</button>
     </header>
     <main>
+        <div id="form" class="form">
+            <form action="" method="POST">
+                <div class="form__close" title="Close">
+                    
+                </div>
+                <div class="form__nav"></div>
+                <div v-show="step === 1">
+                    <div class="form__banner flex">
+                        <h4>Get your free, no obligation estimate today!</h4>
+                    </div>
+                    <div class="form__content flex">
+                        <div class="content-left">
+                            <div class="input-wrapper">
+                                <label for="zip">ZIP Code<span>*</span></label>
+                                <input id="zip" type="text" name="zip" placeholder="Enter your ZIP Code*">
+                            </div>
+                            
+                            <button @click.prevent="next()">Click here to check availability in your area and get <br> a free estimate <br> (no obligation)</button>
+                        </div>
+                        <div class="content-right">
+                            <div class="discount-wrapper">
+                                <div class="discount">
+                                    <div class="discount__title">15% OFF Discount</div>
+                                    <div class="discount__barcode">
+                                        <svg id="barcode"></svg>
+                                    </div>
+                                    <div class="discount__note"><span>Please NOTE</span>: This coupon is generated personally for you and will be valid only if you request your no obligation estimate today</div>
+                                    <div>
+                                        <span>Exp. 24hours</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-show="step === 2">
+                    <div class="form__banner flex">
+                        <h4>Enter your home details</h4>
+                    </div>
+                    <div class="form__content flex">
+                        <div class="content-left">
+                            <div class="input-wrapper">
+                                <label for="zip">ZIP Code<span>*</span></label>
+                                <input id="zip" type="text" name="zip" placeholder="Enter your ZIP Code*">
+                            </div>
+                            
+                            <button @click.prevent="next()">Click here to check availability in your area and get <br> a free estimate <br> (no obligation)</button>
+                        </div>
+                    </div>
+                </div>
+                <div v-show="step === 3">
+                    <div class="form__banner flex">
+                        <h4>You're one step away from an estimate and a lifetime of clog free gutters</h4>
+                    </div>
+                    <div class="form__content">
+                        <p>We need additional details about the current state of your home to provide an accurate estimate</p>
+                        <div class="flex">
+                            <div class="content-left">
+                                <div class="input-wrapper">
+                                    <label for="name">Full Name<span>*</span></label>
+                                    <input id="name" type="text" name="name" placeholder="ex: John Brown">
+                                </div>
+                                <div class="input-wrapper">
+                                    <label for="email">Email Address<span>*</span></label>
+                                    <input id="email" type="email" name="email" placeholder="Email">
+                                </div>
+                                <div class="input-wrapper">
+                                    <label for="phone">Phone<span>*</span></label>
+                                    <input id="phone" type="tel" name="phone" placeholder="(123)456-7890">
+                                </div>
+                                
+                                <button>Get my estimate</button>
+                            </div>
+                            <div class="content-right">
+                                <p>With your installation you also get:</p>
+                                <ul class="benefits">
+                                    <li>Free Gutter cleaning, Realingment & sealing</li>
+                                    <li>Lifetime transferable warranty</li>
+                                    <li>Significant increase of your home value</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
     </main>
     <footer>
     </footer>
 
     <!--build:js js/main.min.js -->
     <script src="js/lib/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
     <script src="js/lib/vue.min.js"></script>
     <script src="js/lib/vee-validate.min.js"></script>
     <script src="js/lib/vue-the-mask.min.js"></script>
@@ -32,15 +118,6 @@
     <script>
     Vue.use(VeeValidate);
     Vue.use(VueTheMask);
-
-    new Vue({
-        el: '#form',
-        model: {
-            name: '',
-            phone: '',
-            class: ''
-        }
-    })
     </script>
 </body>
 

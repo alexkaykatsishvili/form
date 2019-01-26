@@ -1,5 +1,7 @@
 html, body {
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  background: #ccc; }
 
 button {
   border-radius: 10px;
@@ -16,6 +18,101 @@ button {
   font-size: 15px;
   font-weight: 600;
   line-height: 21px;
-  text-align: center; }
+  text-align: center;
+  margin-top: 40px; }
   button:hover {
     background: #c8671a; }
+
+input {
+  border: 2px solid #a0a0a0;
+  background-color: #fff;
+  width: 300px;
+  max-width: 100%;
+  height: 38px;
+  border-radius: 5px;
+  padding: 10px;
+  color: #7f8596;
+  font-size: 18px;
+  font-weight: 400;
+  outline: none; }
+  input:focus {
+    border: 2px solid #df731d; }
+
+label {
+  color: #222326;
+  font-size: 28px;
+  font-weight: 700; }
+  label span {
+    color: #ce2028;
+    font-size: 16px; }
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.form {
+  width: 800px;
+  max-width: 100%;
+  background: #fff url("../img/bg.jpg") no-repeat;
+  background-size: cover;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%); }
+  .form__banner {
+    background-color: #222326;
+    min-height: 76px;
+    color: #fff;
+    font-size: 28px;
+    line-height: 43px;
+    text-align: center;
+    text-transform: capitalize; }
+    .form__banner h4 {
+      letter-spacing: -0.02em; }
+  .form__content .content-left, .form__content .content-right {
+    width: 50%;
+    padding: 40px; }
+  .form__content .input-wrapper {
+    display: flex;
+    flex-direction: column; }
+  .form form {
+    position: relative; }
+    .form form .form__close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 21px;
+      width: 21px;
+      cursor: pointer;
+      background: url("../img/close.png"); }
+  .form .discount {
+    font-family: 'Roboto Slab', serif;
+    border: 2px dashed red;
+    padding: 30px; }
+    .form .discount-wrapper {
+      background-color: #f2f2f2;
+      padding: 10px; }
+    .form .discount__title {
+      color: #5ea756;
+      font-size: 36px;
+      font-weight: 400;
+      text-align: center;
+      line-height: 1.2;
+      max-width: 200px;
+      margin: 0 auto; }
+    .form .discount__barcode svg {
+      max-width: 100%; }
+    .form .discount__note {
+      color: #000000;
+      font-size: 9px;
+      font-weight: 700;
+      text-align: center;
+      max-width: 250px;
+      margin: 0 auto;
+      line-height: 1.2;
+      word-break: break-all; }
+      .form .discount__note span {
+        background: yellow; }
+  .form .benefits {
+    list-style-image: url("../img/check.png"); }

@@ -1,10 +1,13 @@
 html, body {
     font-family: 'Open Sans', sans-serif;
-    // font-family: 'Roboto Slab', serif;
+    font-weight: 600;
+    background: #ccc;
 }
 
 $orange: #df731d;
 $white: #fff;
+$black: #222326;
+$green: #5ea756;
 
 button {
     border-radius: 10px;
@@ -22,8 +25,127 @@ button {
     font-weight: 600;
     line-height: 21px;
     text-align: center;
+    margin-top: 40px;
     &:hover {
         background: darken($orange, 5%);
+    }
+}
+
+input {
+    border: 2px solid #a0a0a0;
+    background-color: $white;
+    width: 300px;
+    max-width: 100%;
+    height: 38px;
+    border-radius: 5px;
+    padding: 10px;
+    color:  #7f8596;
+    font-size: 18px;
+    font-weight: 400;
+    outline: none;
+    &:focus {
+        border: 2px solid $orange;
+    }
+}
+
+label {
+    color:  $black;
+    font-size: 28px;
+    font-weight: 700;
+    span {
+        color:  #ce2028;
+        font-size: 16px;
+    }
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    width: 800px;
+    max-width: 100%;
+    background: $white url("../img/bg.jpg") no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    &__banner {
+        background-color: $black;
+        min-height: 76px;
+        color: $white;
+        font-size: 28px;
+        line-height: 43px;
+        text-align: center;
+        text-transform: capitalize;
+        h4 {
+            letter-spacing: -0.02em;
+        }
+    }
+    &__content {
+        .content-left, .content-right {
+            width: 50%;
+            padding: 40px;
+        }
+        .input-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    form {
+        position: relative;
+        .form__close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 21px;
+            width: 21px;
+            cursor: pointer;
+            background: url("../img/close.png");
+        }
+    }
+    .discount {
+        font-family: 'Roboto Slab', serif;
+        border: 2px dashed red;
+        padding: 30px;
+        &-wrapper {
+            background-color:  #f2f2f2;
+            padding: 10px;
+        }
+        &__title {
+            color: $green;
+            font-size: 36px;
+            font-weight: 400;
+            text-align: center;
+            line-height: 1.2;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+        &__barcode {
+            
+            svg {
+                max-width: 100%;
+            }
+        }
+        &__note {
+            color:  #000000;
+            font-size: 9px;
+            font-weight: 700;
+            text-align: center;
+            max-width: 250px;
+            margin: 0 auto;
+            line-height: 1.2;
+            word-break: break-all;
+            span {
+                background: yellow;
+            }
+        }
+    }
+    .benefits {
+        list-style-image: url("../img/check.png")
     }
 }
 
