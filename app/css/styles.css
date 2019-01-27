@@ -39,6 +39,10 @@ input[type="text"], input[type="email"], input[type="tel"] {
   input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
     border: 2px solid #df731d; }
 
+input[type=checkbox], input[type=radio] {
+  width: 26px;
+  height: 26px; }
+
 label {
   color: #222326;
   font-size: 28px;
@@ -93,12 +97,14 @@ label {
     .form__banner h4 {
       letter-spacing: -0.02em;
       margin-bottom: 0; }
+  .form__info {
+    text-align: center; }
   .form__content {
-    align-items: flex-start; }
+    align-items: flex-start;
+    padding: 20px; }
     .form__content .content-left,
     .form__content .content-right {
-      width: calc(50% - 20px);
-      padding: 40px; }
+      max-width: calc(50% - 20px); }
     .form__content .input-wrapper {
       display: flex;
       flex-direction: column; }
@@ -110,13 +116,19 @@ label {
     text-align: center;
     margin: 0 50px 0 40px;
     cursor: pointer; }
+    .form__nav > div {
+      width: 22.5%;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      user-select: none; }
     .form__nav p {
       font-size: 20px;
       font-weight: 600;
       margin-bottom: 0;
       padding-left: 16px; }
     .form__nav .progress {
-      width: 160px;
       height: 16px;
       color: #050708;
       background: #050708;
@@ -124,11 +136,6 @@ label {
       font-weight: 400;
       line-height: 1;
       position: relative;
-      -moz-user-select: none;
-      -webkit-user-select: none;
-      -ms-user-select: none;
-      -o-user-select: none;
-      user-select: none;
       padding-left: 16px; }
       .form__nav .progress:after {
         content: url("../img/progress-black.png");
@@ -144,13 +151,15 @@ label {
           position: absolute;
           right: -22px; }
   .form .details {
-    justify-content: flex-start; }
+    justify-content: flex-start;
+    flex-direction: column;
+    background: url("../img/house.png") 100% 100% no-repeat; }
     .form .details label {
-      font-size: 14px; }
+      font-size: 20px; }
   .form .discount {
     font-family: 'Roboto Slab', serif;
     border: 2px dashed red;
-    padding: 30px; }
+    padding: 30px 10px 16px; }
     .form .discount-wrapper {
       background-color: #f2f2f2;
       padding: 10px; }
@@ -175,13 +184,36 @@ label {
       word-break: break-all; }
       .form .discount__note span {
         background: yellow; }
+    .form .discount__footer {
+      justify-content: space-between;
+      margin-top: 20px; }
+      .form .discount__footer span {
+        font-size: 8px; }
+    .form .discount__logo {
+      width: 85px;
+      height: 20px;
+      background: url("../img/logo.png") no-repeat;
+      background-size: cover; }
   .form .benefits {
     list-style-image: url("../img/check.png"); }
+    .form .benefits span {
+      text-transform: uppercase;
+      font-weight: 700; }
 
 @media (max-width: 768px) {
   .form__nav {
     justify-content: center; }
+    .form__nav > div {
+      width: 50%; }
   .form__content .content-left,
   .form__content .content-right {
     width: 100%;
-    padding: 40px; } }
+    max-width: 100%; } }
+
+@media (max-width: 576px) {
+  label {
+    font-size: 18px; }
+  .form__banner {
+    padding: 10px;
+    font-size: 20px;
+    line-height: 1.5; } }

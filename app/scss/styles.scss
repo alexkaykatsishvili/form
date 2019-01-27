@@ -51,6 +51,11 @@ input[type="text"], input[type="email"], input[type="tel"] {
     }
 }
 
+input[type=checkbox], input[type=radio] {
+    width: 26px;
+    height: 26px;
+}
+
 label {
     color: $black;
     font-size: 28px;
@@ -117,14 +122,18 @@ label {
             
         }
     }
+    
+    &__info {
+            text-align: center;
+    }
 
     &__content {
         align-items: flex-start;
-
+        padding: 20px;
         .content-left,
         .content-right {
-            width: calc(50% - 20px);
-            padding: 40px;
+            max-width: calc(50% - 20px);
+            // padding: 40px;
         }
 
         .input-wrapper {
@@ -141,6 +150,14 @@ label {
         text-align: center;
         margin: 0 50px 0 40px;
         cursor: pointer;
+        & > div {
+            width: 22.5%;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
         p {
             font-size: 20px;
             font-weight: 600;
@@ -149,7 +166,6 @@ label {
         }
 
         .progress {
-            width: 160px;
             height: 16px;
             color: #050708;
             background: #050708;
@@ -157,11 +173,7 @@ label {
             font-weight: 400;
             line-height: 1;
             position: relative;
-             -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            -o-user-select: none;
-            user-select: none;
+            
             padding-left: 16px;
             &:after {
                 content: url("../img/progress-black.png");
@@ -188,15 +200,17 @@ label {
     
     .details {
         justify-content: flex-start;
+        flex-direction: column;
+        background: url("../img/house.png") 100% 100% no-repeat;
         label {
-            font-size: 14px;
+            font-size: 20px;
         }
     }
 
     .discount {
         font-family: 'Roboto Slab', serif;
         border: 2px dashed red;
-        padding: 30px;
+        padding: 30px 10px 16px;
 
         &-wrapper {
             background-color: #f2f2f2;
@@ -234,10 +248,27 @@ label {
                 background: yellow;
             }
         }
+        &__footer {
+            justify-content: space-between;
+            margin-top: 20px;
+            span {
+                font-size: 8px;
+            }
+        }
+        &__logo {
+            width: 85px;
+            height: 20px;
+            background: url("../img/logo.png") no-repeat;
+            background-size: cover;
+        }
     }
 
     .benefits {
-        list-style-image: url("../img/check.png")
+        list-style-image: url("../img/check.png");
+        span {
+            text-transform: uppercase;
+            font-weight: 700;
+        }
     }
 }
 
@@ -249,17 +280,32 @@ label {
     .form {
         &__nav {
             justify-content: center;
+            & > div {
+                width: 50%;
+            }
         }
         &__content {
             .content-left,
             .content-right {
                 width: 100%;
-                padding: 40px;
+                max-width: 100%;
+                // padding: 40px;
             }
         }
     }
 }
 
-@media (max-width: 576px) {}
+@media (max-width: 576px) {
+    label {
+        font-size: 18px;
+    }
+    .form {
+        &__banner {
+            padding: 10px;
+            font-size: 20px;
+            line-height: 1.5;
+        }
+    }
+}
 
 @media (max-width: 360px) {}

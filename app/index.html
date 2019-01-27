@@ -42,7 +42,7 @@
                     <div class="form__banner flex">
                         <h4>Get your free, no obligation estimate today!</h4>
                     </div>
-                    <div class="form__content flex">
+                    <div class="form__content flex eligibility">
                         <div class="content-left flex">
                             <div class="input-wrapper">
                                 <label for="zip">ZIP Code<span>*</span></label>
@@ -59,8 +59,9 @@
                                         <svg id="barcode"></svg>
                                     </div>
                                     <div class="discount__note"><span>Please NOTE</span>: This coupon is generated personally for you and will be valid only if you request your no obligation estimate today</div>
-                                    <div>
+                                    <div class="discount__footer flex">
                                         <span>Exp. 24hours</span>
+                                        <div class="discount__logo"></div>
                                     </div>
                                 </div>
                             </div>
@@ -70,7 +71,7 @@
                 <div v-show="step === 2">
                     <div class="form__banner flex">
                         <h4>Enter your home details</h4>
-                        <p>Requared for more accurate estimate)!</p>
+                        <p>(Requared for more accurate estimate)!</p>
                     </div>
                     <div class="form__content flex details">
                         <div class="input-wrapper">
@@ -122,10 +123,10 @@
                 </div>
                 <div v-show="step === 3">
                     <div class="form__banner flex">
-                        <h4>You're one step away from an estimate and a lifetime of clog free gutters</h4>
+                        <h4>You're one step away from an estimate <br> and a lifetime of clog free gutters</h4>
                     </div>
                     <div class="form__content">
-                        <p>We need additional details about the current state of your home to provide an accurate estimate</p>
+                        <p class="form__info">We need additional details about the current state of your home to provide an accurate estimate</p>
                         <div class="flex">
                             <div class="content-left">
                                 <div class="input-wrapper">
@@ -140,15 +141,14 @@
                                     <label for="phone">Phone<span>*</span></label>
                                     <input id="phone" type="tel" name="phone" placeholder="(123)456-7890" v-mask="'(###)###-####'">
                                 </div>
-                                
                                 <button @click="next()">Get my estimate</button>
                             </div>
                             <div class="content-right">
                                 <p>With your installation you also get:</p>
                                 <ul class="benefits">
-                                    <li>Free Gutter cleaning, Realingment & sealing</li>
-                                    <li>Lifetime transferable warranty</li>
-                                    <li>Significant increase of your home value</li>
+                                    <li><span>Free Gutter</span> cleaning, Realingment & sealing</li>
+                                    <li><span>Lifetime</span> transferable warranty</li>
+                                    <li><span>Significant</span> increase of your home value</li>
                                 </ul>
                             </div>
                         </div>
