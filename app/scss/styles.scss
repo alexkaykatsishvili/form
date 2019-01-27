@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     background: #ccc;
@@ -11,7 +12,7 @@ $green: #5ea756;
 
 button {
     border-radius: 10px;
-    background-color:  $orange;
+    background-color: $orange;
     border: none;
     box-shadow: 0px 0px 16.56px 1.44px rgba(0, 0, 2, 0.69);
     width: 305px;
@@ -26,12 +27,13 @@ button {
     line-height: 21px;
     text-align: center;
     margin-top: 40px;
+
     &:hover {
         background: darken($orange, 5%);
     }
 }
 
-input {
+input[type="text"], input[type="email"], input[type="tel"] {
     border: 2px solid #a0a0a0;
     background-color: $white;
     width: 300px;
@@ -39,21 +41,23 @@ input {
     height: 38px;
     border-radius: 5px;
     padding: 10px;
-    color:  #7f8596;
+    color: #7f8596;
     font-size: 18px;
     font-weight: 400;
     outline: none;
+
     &:focus {
         border: 2px solid $orange;
     }
 }
 
 label {
-    color:  $black;
+    color: $black;
     font-size: 28px;
     font-weight: 700;
+
     span {
-        color:  #ce2028;
+        color: #ce2028;
         font-size: 16px;
     }
 }
@@ -62,17 +66,37 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .form {
     width: 800px;
     max-width: 100%;
+    margin: 0 auto;
+    padding: 40px 0;
     background: $white url("../img/bg.jpg") no-repeat;
     background-size: cover;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    position: relative;
+
+    &__close {
+        position: absolute;
+        top: 45px;
+        right: 27px;
+        height: 21px;
+        width: 21px;
+        cursor: pointer;
+        background: url("../img/close.png");
+        padding: 0;
+        border-radius: unset;
+        min-height: 21px;
+        box-shadow: none;
+        margin: 0;
+        outline: none;
+        &:hover {
+            background: url("../img/close.png");
+        }
+    }
+
     &__banner {
         background-color: $black;
         min-height: 76px;
@@ -81,40 +105,104 @@ label {
         line-height: 43px;
         text-align: center;
         text-transform: capitalize;
+        flex-direction: column;
+        p {
+            margin-bottom: 0;
+            font-size: 14px;
+            text-transform: none;
+        }
         h4 {
             letter-spacing: -0.02em;
+            margin-bottom: 0;
+            
         }
     }
+
     &__content {
-        .content-left, .content-right {
-            width: 50%;
+        align-items: flex-start;
+
+        .content-left,
+        .content-right {
+            width: calc(50% - 20px);
             padding: 40px;
         }
+
         .input-wrapper {
             display: flex;
             flex-direction: column;
         }
     }
-    form {
-        position: relative;
-        .form__close {
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 21px;
-            width: 21px;
-            cursor: pointer;
-            background: url("../img/close.png");
+
+    &__nav {
+        max-width: 730px;
+        margin: 0 auto;
+        padding: 40px 0;
+        justify-content: space-between;
+        text-align: center;
+        margin: 0 50px 0 40px;
+        cursor: pointer;
+        p {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 0;
+            padding-left: 16px;
+        }
+
+        .progress {
+            width: 160px;
+            height: 16px;
+            color: #050708;
+            background: #050708;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1;
+            position: relative;
+             -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            padding-left: 16px;
+            &:after {
+                content: url("../img/progress-black.png");
+                position: absolute;
+                right: -22px;
+            }
+        }
+
+        div[complete=true] {
+            color: #00ad44;
+
+            .progress {
+                color: $white;
+                background: #00ad44;
+
+                &:after {
+                    content: url("../img/progress-green.png");
+                    position: absolute;
+                    right: -22px;
+                }
+            }
         }
     }
+    
+    .details {
+        justify-content: flex-start;
+        label {
+            font-size: 14px;
+        }
+    }
+
     .discount {
         font-family: 'Roboto Slab', serif;
         border: 2px dashed red;
         padding: 30px;
+
         &-wrapper {
-            background-color:  #f2f2f2;
+            background-color: #f2f2f2;
             padding: 10px;
         }
+
         &__title {
             color: $green;
             font-size: 36px;
@@ -124,14 +212,16 @@ label {
             max-width: 200px;
             margin: 0 auto;
         }
+
         &__barcode {
-            
+
             svg {
                 max-width: 100%;
             }
         }
+
         &__note {
-            color:  #000000;
+            color: #000000;
             font-size: 9px;
             font-weight: 700;
             text-align: center;
@@ -139,32 +229,37 @@ label {
             margin: 0 auto;
             line-height: 1.2;
             word-break: break-all;
+
             span {
                 background: yellow;
             }
         }
     }
+
     .benefits {
         list-style-image: url("../img/check.png")
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1200px) {}
 
-}
-
-@media (max-width: 992px) {
-
-}
+@media (max-width: 992px) {}
 
 @media (max-width: 768px) {
-
+    .form {
+        &__nav {
+            justify-content: center;
+        }
+        &__content {
+            .content-left,
+            .content-right {
+                width: 100%;
+                padding: 40px;
+            }
+        }
+    }
 }
 
-@media (max-width: 576px) {
-   
-}
+@media (max-width: 576px) {}
 
-@media (max-width: 360px) {
-
-}
+@media (max-width: 360px) {}

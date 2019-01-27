@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   background: #ccc; }
@@ -23,7 +24,7 @@ button {
   button:hover {
     background: #c8671a; }
 
-input {
+input[type="text"], input[type="email"], input[type="tel"] {
   border: 2px solid #a0a0a0;
   background-color: #fff;
   width: 300px;
@@ -35,7 +36,7 @@ input {
   font-size: 18px;
   font-weight: 400;
   outline: none; }
-  input:focus {
+  input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
     border: 2px solid #df731d; }
 
 label {
@@ -49,17 +50,33 @@ label {
 .flex {
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  flex-wrap: wrap; }
 
 .form {
   width: 800px;
   max-width: 100%;
+  margin: 0 auto;
+  padding: 40px 0;
   background: #fff url("../img/bg.jpg") no-repeat;
   background-size: cover;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%); }
+  position: relative; }
+  .form__close {
+    position: absolute;
+    top: 45px;
+    right: 27px;
+    height: 21px;
+    width: 21px;
+    cursor: pointer;
+    background: url("../img/close.png");
+    padding: 0;
+    border-radius: unset;
+    min-height: 21px;
+    box-shadow: none;
+    margin: 0;
+    outline: none; }
+    .form__close:hover {
+      background: url("../img/close.png"); }
   .form__banner {
     background-color: #222326;
     min-height: 76px;
@@ -67,25 +84,69 @@ label {
     font-size: 28px;
     line-height: 43px;
     text-align: center;
-    text-transform: capitalize; }
-    .form__banner h4 {
-      letter-spacing: -0.02em; }
-  .form__content .content-left, .form__content .content-right {
-    width: 50%;
-    padding: 40px; }
-  .form__content .input-wrapper {
-    display: flex;
+    text-transform: capitalize;
     flex-direction: column; }
-  .form form {
-    position: relative; }
-    .form form .form__close {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 21px;
-      width: 21px;
-      cursor: pointer;
-      background: url("../img/close.png"); }
+    .form__banner p {
+      margin-bottom: 0;
+      font-size: 14px;
+      text-transform: none; }
+    .form__banner h4 {
+      letter-spacing: -0.02em;
+      margin-bottom: 0; }
+  .form__content {
+    align-items: flex-start; }
+    .form__content .content-left,
+    .form__content .content-right {
+      width: calc(50% - 20px);
+      padding: 40px; }
+    .form__content .input-wrapper {
+      display: flex;
+      flex-direction: column; }
+  .form__nav {
+    max-width: 730px;
+    margin: 0 auto;
+    padding: 40px 0;
+    justify-content: space-between;
+    text-align: center;
+    margin: 0 50px 0 40px;
+    cursor: pointer; }
+    .form__nav p {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 0;
+      padding-left: 16px; }
+    .form__nav .progress {
+      width: 160px;
+      height: 16px;
+      color: #050708;
+      background: #050708;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1;
+      position: relative;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+      padding-left: 16px; }
+      .form__nav .progress:after {
+        content: url("../img/progress-black.png");
+        position: absolute;
+        right: -22px; }
+    .form__nav div[complete=true] {
+      color: #00ad44; }
+      .form__nav div[complete=true] .progress {
+        color: #fff;
+        background: #00ad44; }
+        .form__nav div[complete=true] .progress:after {
+          content: url("../img/progress-green.png");
+          position: absolute;
+          right: -22px; }
+  .form .details {
+    justify-content: flex-start; }
+    .form .details label {
+      font-size: 14px; }
   .form .discount {
     font-family: 'Roboto Slab', serif;
     border: 2px dashed red;
@@ -116,3 +177,11 @@ label {
         background: yellow; }
   .form .benefits {
     list-style-image: url("../img/check.png"); }
+
+@media (max-width: 768px) {
+  .form__nav {
+    justify-content: center; }
+  .form__content .content-left,
+  .form__content .content-right {
+    width: 100%;
+    padding: 40px; } }

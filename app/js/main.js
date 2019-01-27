@@ -1,12 +1,12 @@
-;
-(function($) {
+;(function($) {
     "use strict";
 
     const form = new Vue({
         el: '#form',
         data() {
             return {
-                step: 1,
+                step: 2,
+                // zip: ''
             }
         },
         methods: {
@@ -15,6 +15,9 @@
             },
             next() {
                 this.step++;
+            },
+            stepUp(n) {
+                this.step = n;
             }
         }
     });
