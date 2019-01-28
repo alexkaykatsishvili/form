@@ -21,15 +21,15 @@
             <form action="" method="POST">
                 
                 <div class="form__nav flex">
-                    <div step="1" :complete="step === 1" @click="stepUp(1)">
+                    <div step="1" :complete="step === 1" @click="stepTo(1)">
                         <p>Eligibility</p>
                         <div class="progress">You're here</div>
                     </div>
-                    <div step="2" :complete="step === 2" @click="stepUp(2)">
+                    <div step="2" :complete="step === 2" @click="stepTo(2)">
                         <p>Details</p>
                         <div class="progress">You're here</div>
                     </div>
-                    <div step="3" :complete="step === 3" @click="stepUp(3)">
+                    <div step="3" :complete="step === 3" @click="stepTo(3)">
                         <p>Info</p>
                         <div class="progress" >You're here</div>
                     </div>
@@ -46,10 +46,12 @@
                         <div class="content-left flex">
                             <div class="input-wrapper">
                                 <label for="zip">ZIP Code<span>*</span></label>
-                                <input id="zip" type="text" name="zip" placeholder="Enter your ZIP Code*" v-mask="'#####'">
+                                <input id="zip" type="text" name="zip" placeholder="Enter your ZIP Code*" v-mask="'#####'" v-validate="'required'">
+                                <span class="error">{{ errors.first('zip') }}</span>
                             </div>
-                            
-                            <button @click.prevent="next()">Click here to check availability in your area and get <br> a free estimate <br> (no obligation)</button>
+                            <div class="input-wrapper">
+                                <button @click.prevent="next()">Click here to check availability in your area and get <br> a free estimate <br> (no obligation)</button>
+                            </div>
                         </div>
                         <div class="content-right">
                             <div class="discount-wrapper">
@@ -75,84 +77,105 @@
                     </div>
                     <div class="form__content flex details">
                         <div class="input-wrapper">
-                            <p>How big is your home?</p>
-                            <div class="flex">
-                                <input type="radio" id="size1"
-                                 name="size" value="500 - 1000 sqft">
-                                <label for="size1">500 - 1000 sqft</label>
+                            <p class="details__title">How big is your home?</p>
+                            <div class="flex mw-f">
+                                <div class="flex">
+                                    <input type="radio" id="size1"
+                                     name="size" value="500 - 1000 sqft">
+                                    <label for="size1">500 - 1000 sqft</label>
+                                </div>
                                 
-                                <input type="radio" id="size2"
-                                 name="size" value="1000 - 3000 sqft">
-                                <label for="size2">1000 - 3000 sqft</label>
+                                <div class="flex">
+                                    <input type="radio" id="size2"
+                                     name="size" value="1000 - 3000 sqft">
+                                    <label for="size2">1000 - 3000 sqft</label>
+                                </div>
                                 
-                                <input type="radio" id="size3"
-                                 name="size" value="3000 + sqft">
-                                <label for="size3">3000 + sqft</label>
+                                <div class="flex">
+                                    <input type="radio" id="size3"
+                                     name="size" value="3000 + sqft">
+                                    <label for="size3">3000 + sqft</label>
+                                </div>
                             </div>
                         </div>
                         <div class="input-wrapper">
-                            <p>How many levels does your home have?</p>
-                            <div class="flex">
-                                <input type="radio" id="level1"
-                                 name="levels" value="1">
-                                <label for="level1">1</label>
+                            <p class="details__title">How many levels does your home have?</p>
+                            <div class="flex mw-s">
+                                <div class="flex">
+                                    <input type="radio" id="level1"
+                                     name="levels" value="1">
+                                    <label for="level1">1</label>
+                                </div>
                                 
-                                <input type="radio" id="level2"
-                                 name="levels" value="2">
-                                <label for="level2">2</label>
+                                <div class="flex">
+                                    <input type="radio" id="level2"
+                                     name="levels" value="2">
+                                    <label for="level2">2</label>
+                                </div>
                                 
-                                <input type="radio" id="level3"
-                                 name="levels" value="3">
-                                <label for="level3">3</label>
+                                <div class="flex">
+                                    <input type="radio" id="level3"
+                                     name="levels" value="3+">
+                                    <label for="level3">3+</label>
+                                </div>
                             </div>
                         </div>
                         <div class="input-wrapper">
-                            <p>Does your home have gutters?</p>
-                            <div class="flex">
-                                <input type="radio" id="gutters1"
-                                 name="gutters" value="Yes">
-                                <label for="gutters1">Yes</label>
+                            <p class="details__title">Does your home have gutters?</p>
+                            <div class="flex mw-t">
+                                <div class="flex">
+                                    <input type="radio" id="gutters1"
+                                     name="gutters" value="Yes">
+                                    <label for="gutters1">Yes</label>
+                                </div>
                                 
-                                <input type="radio" id="gutters2"
-                                 name="gutters" value="No">
-                                <label for="gutters2">No</label>
+                                <div class="flex">
+                                    <input type="radio" id="gutters2"
+                                     name="gutters" value="No">
+                                    <label for="gutters2">No</label>
+                                </div>
                             </div>
                         </div>
-                        <button @click.prevent="next()">Click here to confirm <br> your home details</button>
+                        <div class="input-wrapper">
+                            <button @click.prevent="next()">Click here to confirm <br> your home details</button>
+                        </div>
                     </div>
                 </div>
                 <div v-show="step === 3">
                     <div class="form__banner flex">
                         <h4>You're one step away from an estimate <br> and a lifetime of clog free gutters</h4>
                     </div>
-                    <div class="form__content">
-                        <p class="form__info">We need additional details about the current state of your home to provide an accurate estimate</p>
-                        <div class="flex">
-                            <div class="content-left">
-                                <div class="input-wrapper">
-                                    <label for="name">Full Name<span>*</span></label>
-                                    <input id="name" type="text" name="name" placeholder="ex: John Brown">
-                                </div>
-                                <div class="input-wrapper">
-                                    <label for="email">Email Address<span>*</span></label>
-                                    <input id="email" type="email" name="email" placeholder="Email">
-                                </div>
-                                <div class="input-wrapper">
-                                    <label for="phone">Phone<span>*</span></label>
-                                    <input id="phone" type="tel" name="phone" placeholder="(123)456-7890" v-mask="'(###)###-####'">
-                                </div>
-                                <button @click="next()">Get my estimate</button>
+                    <p class="form__info">We need additional details about the current state of your home to provide an accurate estimate</p>
+                    <div class="form__content flex info">
+                        <div class="content-left">
+                            <div class="input-wrapper">
+                                <label for="name">Full Name<span>*</span></label>
+                                <input id="name" type="text" name="name" placeholder="ex: John Brown" v-validate="'required|alpha_spaces'">
+                                <span class="error">{{ errors.first('name') }}</span>
                             </div>
-                            <div class="content-right">
-                                <p>With your installation you also get:</p>
-                                <ul class="benefits">
-                                    <li><span>Free Gutter</span> cleaning, Realingment & sealing</li>
-                                    <li><span>Lifetime</span> transferable warranty</li>
-                                    <li><span>Significant</span> increase of your home value</li>
-                                </ul>
+                            <div class="input-wrapper">
+                                <label for="email">Email Address:<span>*</span></label>
+                                <input id="email" type="email" name="email" placeholder="Email" v-validate="'required|email'">
+                                <span class="error">{{ errors.first('email') }}</span>
+                            </div>
+                            <div class="input-wrapper">
+                                <label for="phone">Phone<span>*</span></label>
+                                <input id="phone" type="tel" name="phone" placeholder="(123)456-7890" v-mask="'(###)###-####'" v-validate="'required'">
+                                <span class="error">{{ errors.first('phone') }}</span>
+                            </div>
+                            <div class="input-wrapper">
+                                <button @click="next()">Get my estimate</button>
+                                <span class="info__safe">Safe, Secure and Confidantial</span>
                             </div>
                         </div>
-                        
+                        <div class="content-right benefits">
+                            <p class="benefits__title">With your installation you also get:</p>
+                            <ul class="benefits__list">
+                                <li><span>Free Gutter</span> cleaning, Realingment & sealing</li>
+                                <li><span>Lifetime</span> transferable warranty</li>
+                                <li><span>Significant</span> increase of your home value</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div v-show="step === 4">
@@ -175,8 +198,7 @@
     <script src="js/main.js"></script>
     <!-- endbuild -->
     <script>
-    Vue.use(VeeValidate);
-    Vue.use(VueTheMask);
+    
     </script>
 </body>
 

@@ -1,12 +1,14 @@
 ;(function($) {
     "use strict";
 
+    Vue.use(VeeValidate);
+    Vue.use(VueTheMask);
+
     const form = new Vue({
         el: '#form',
         data() {
             return {
-                step: 1,
-                // zip: ''
+                step: 2,
             }
         },
         methods: {
@@ -16,7 +18,7 @@
             next() {
                 this.step++;
             },
-            stepUp(n) {
+            stepTo(n) {
                 this.step = n;
             }
         }
