@@ -8,7 +8,7 @@
         el: '#form',
         data() {
             return {
-                step: 2,
+                step: 1,
             }
         },
         methods: {
@@ -22,6 +22,14 @@
                 this.step = n;
             }
         }
+    });
+
+    $("#estimate").on("click", function(){
+        $("#form").show();
+    });
+    
+    $(".form__close").on("click", function(){
+        $("#form").hide();
     });
 
     JsBarcode("#barcode", "DEC2018-{Dynamic ZIP}*{Floor_number}");

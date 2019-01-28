@@ -2,7 +2,11 @@ html,
 body {
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
-    background: #ccc;
+    background: #FF5F6D;
+    background: -webkit-linear-gradient(left, #df721d, #FF5F6D);
+    background: -o-linear-gradient(left, #df721d, #FF5F6D);
+    background: linear-gradient(to right, #df721d, #FF5F6D);
+
 }
 
 $orange: #df731d;
@@ -85,7 +89,12 @@ label {
     flex-wrap: wrap;
 }
 
+main {
+    height: 100vh;
+}
+
 .form {
+    display: none;
     width: 800px;
     max-width: 100%;
     margin: 0 auto;
@@ -93,7 +102,10 @@ label {
     background: $white url("../img/bg.jpg") no-repeat;
     background-size: cover;
     position: relative;
-
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
     &__close {
         position: absolute;
         top: 25px;
